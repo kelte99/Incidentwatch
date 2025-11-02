@@ -1,11 +1,10 @@
-
-## 👨‍💻 Autor
+ 👨‍💻 Autor
 
 **Kevin Ruiz Arroyo**  
 🎓 Proyecto Capstone — Bootcamp DevOps & Cloud  
 
 
-# 🧠 IncidentWatch
+ IncidentWatch
 
 **IncidentWatch** es un microservicio backend desarrollado con **FastAPI** para la gestión y monitorización de incidencias IT dentro de una organización.  
 Permite **crear, listar y actualizar tickets de incidencia**, mientras expone métricas internas en formato **Prometheus** para su posterior visualización en **Grafana**.
@@ -14,7 +13,7 @@ El proyecto está completamente **contenedorizado con Docker**, **desplegado en 
 
 ---
 
-## 🏗️ Arquitectura del Proyecto
+Arquitectura del Proyecto
 
 ```mermaid
 graph TD
@@ -34,7 +33,7 @@ graph TD
     F[🐋 DockerHub (kelte99/incidentwatch)] --> C
     G[⚙️ YAMLs_de_Kubernetes_(IaC)] --> Cluster_Kubernetes_(Minikube)
 
-⚙️ Tecnologías Utilizadas
+Tecnologías Utilizadas
 
 FastAPI → Framework principal del backend
 
@@ -48,24 +47,25 @@ Kubernetes (Minikube) → Orquestación de contenedores
 
 Terraform → Infraestructura como código
 
-🚀 Ejecución local
-🧩 Opción 1: Ejecutar con Uvicorn (modo desarrollo)
+Ejecución local
+
+ Opción 1: Ejecutar con Uvicorn (modo desarrollo)
 
 uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 
-👉 Accede a la documentación interactiva:
+ Accede a la documentación interactiva:
 
 En Docker → http://localhost:8000/docs
 
 En Kubernetes → http://localhost:32426/docs
 
-🐋 Opción 2: Construir y ejecutar con Docker
+ Opción 2: Construir y ejecutar con Docker
 
 docker build -t kelte99/incidentwatch .
 docker run -p 8000:8000 kelte99/incidentwatch
 
 
-☸️ Opción 3: Desplegar en Kubernetes (Minikube)
+Opción 3: Desplegar en Kubernetes (Minikube)
 
 kubectl create namespace monitoring
 kubectl apply -f k8s/prometheus.yaml
@@ -85,7 +85,7 @@ Grafana → http://localhost:32300
 
 Backend API → http://localhost:32426/docs
 
-📊 Métricas expuestas
+Métricas expuestas
 
 El endpoint /metrics expone información en formato Prometheus:
 
@@ -100,7 +100,7 @@ Ejemplo de salida:
 # TYPE request_count_total counter
 request_count_total 149
 
-📈 Dashboard en Grafana
+Dashboard en Grafana
 
 Una vez configurada la conexión en Grafana con la URL de Prometheus
 http://prometheus-service.monitoring.svc.cluster.local:9090,
