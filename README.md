@@ -1,7 +1,7 @@
- 👨‍💻 Autor
+ Autor
 
 **Kevin Ruiz Arroyo**  
-🎓 Proyecto Capstone — Bootcamp DevOps & Cloud  
+Proyecto Capstone — Bootcamp DevOps & Cloud  
 
 
  IncidentWatch
@@ -15,23 +15,24 @@ El proyecto está completamente **contenedorizado con Docker**, **desplegado en 
 
 Arquitectura del Proyecto
 
-```mermaid
 graph TD
-    A[👤 Usuario / Navegador - HTTP Requests] --> B[Service: incidentwatch-service - NodePort 8000:32426/TCP]
+    A[Usuario / Navegador] --> B[Service: incidentwatch-service (NodePort 8000:32426)]
     B --> C[Pod: incidentwatch - FastAPI + Prometheus Client]
-    C -->|Expone /metrics| D[Prometheus - Deployment + Service 9090]
-    D -->|Fuente de datos| E[Grafana - Dashboard 32300]
-    E -->|Visualiza métricas| A
+    C --> D[Prometheus - Service 9090]
+    D --> E[Grafana - Dashboard 32300]
+    E --> A
 
-    subgraph Cluster_Kubernetes_(Minikube)
+    subgraph Cluster_Kubernetes_Minicube
         B
         C
         D
         E
     end
 
-    F[🐋 DockerHub (kelte99/incidentwatch)] --> C
-    G[⚙️ YAMLs_de_Kubernetes_(IaC)] --> Cluster_Kubernetes_(Minikube)
+    F[DockerHub: kelte99/incidentwatch] --> C
+    G[YAMLs de Kubernetes (IaC)] --> Cluster_Kubernetes_Minicube
+
+
 
 Tecnologías Utilizadas
 
