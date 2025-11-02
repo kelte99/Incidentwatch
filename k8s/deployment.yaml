@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: incidentwatch-deployment
+  labels:
+    app: incidentwatch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: incidentwatch
+  template:
+    metadata:
+      labels:
+        app: incidentwatch
+    spec:
+      containers:
+        - name: incidentwatch
+          image: kelte99/incidentwatch:v1
+          imagePullPolicy: IfNotPresent   # ⚠️ así no vuelve a descargar la imagen cada vez
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
+          readinessProbe:
+            httpGet:
+              path: /incidents
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /metrics
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          env:
+            - name: ENVIRONMENT
+              value: "k8s"
