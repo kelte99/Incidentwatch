@@ -24,15 +24,15 @@ graph TD
     D -->|Fuente de datos| E[Grafana - Dashboard 32300]
     E -->|Visualiza métricas| A
 
-    subgraph "Cluster Kubernetes (Minikube)"
+    subgraph Cluster_Kubernetes_(Minikube)
         B
         C
         D
         E
     end
 
-    F[🐋 DockerHub<br>kelte99/incidentwatch] --> C
-    G[⚙️ Terraform / IaC] --> "Cluster Kubernetes (Minikube)"
+    F[🐋 DockerHub (kelte99/incidentwatch)] --> C
+    G[⚙️ YAMLs_de_Kubernetes_(IaC)] --> Cluster_Kubernetes_(Minikube)
 
 ⚙️ Tecnologías Utilizadas
 
