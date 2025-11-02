@@ -27,7 +27,6 @@ graph TD
         C
         D
         E
-    end
 
     F[DockerHub: kelte99/incidentwatch] --> C
     G[YAMLs de Kubernetes (IaC)] --> Cluster_Kubernetes_Minicube
